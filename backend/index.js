@@ -31,16 +31,16 @@ app.post("/api/register", (request, response) => {
         //console.log(user);
         user
           .save()
-          .then((savedUser) => {
-            response.status(200).send({
-              message: "New user saved to MongoDB",
-            });
-          })
-          .catch((e) => {
-            response.status(404).send({
-              message: "New user was not saved",
-            });
-          });
+//           .then((savedUser) => {
+//             response.status(200).send({
+//               message: "New user saved to MongoDB",
+//             });
+//           })
+//           .catch((e) => {
+//             response.status(404).send({
+//               message: "New user was not saved",
+//             });
+//           });
       }
     })
     .catch((error) => {
