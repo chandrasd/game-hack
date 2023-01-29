@@ -55,43 +55,19 @@ app.get("/api/leaderboard", (request, response) => {
   User.find({})
     .then((result) => {
       result.forEach((note) => {
-        arr.push(note.score);
+        arr.push(note);
       });
-      console.log("fkkkk");
     })
     .then(() => {
       arr.sort(function (a, b) {
-        return a - b;
+        return a.score - b.score;
       });
       arr.reverse();
-
-      let score = [];
-      let leaderboard = [];
-      const run = async function () {
-        for (let i = 0; i < 10; i++) {
-          score.push(arr[i]);
-          User.findOne({ score: arr[i] }).then((result) => {
-            leaderboard.push(result);
-          });
-        }
-      };
-      run();
-
-      // console.log(typeof score);
-      // console.log("aaaa");
-
-      // console.log(score);
-      // console.log(typeof leaderboard);
-      // console.log(leaderboard);
-      // response.send(leaderboard);
+      console.log(arr);
+      response.send(arr.slice(0,9));
     });
-  // .catch((e) => {
-  //   console.log("error");
-  //   response.status(404).send({
-  //     message: "Can add notes to the array",
-  //   });
-  // });
-  response.send(leaderboard);
+ 
+
 });
 
 app.listen(3000, () => {
