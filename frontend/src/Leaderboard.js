@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([
@@ -19,7 +20,10 @@ const Leaderboard = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="mb-2">Leaderboard</h1>
+      <Link to="/">
+        <h1 className="mb-2 mt-4 absolute top-0 left-0 ml-4">Play</h1>
+      </Link>
+      <h1 className="mb-2 mt-4">Leaderboard</h1>
       <div className="flex flex-col items-center justify-center h-screen">
         {leaderboard.map((user) => (
           <div className="flex flex-row items-center justify-center">
